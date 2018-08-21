@@ -1,0 +1,63 @@
+body {
+    user-select: none;
+    background-color: #10102c;
+    font-size: 1em;
+    margin: 0px auto;
+    text-align: center;
+    color: #f3f3f3;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.titleWrapper {
+    border: 0.1em solid #bdc7d8;
+    background-color: #991044;
+}
+
+.timeInstructions {
+    padding: 10px 0 2px 0;
+}
+
+#seconds, #time, #score {
+    color: aqua;
+    font-size: 1.2em;
+}
+
+#currentWord {
+    font-size: 3em;
+    margin: 0 auto;
+    margin-bottom: 0.2em;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+}
+
+.BoxInput {
+    width: 25vw;
+    height: 4vh;
+    border: 0.2em solid #e51865;
+}
+
+.wrapperScore h3{
+    display: inline;
+    padding: 0.5vh 0 0 0.5vh;
+    font-size: 1em;
+}
+
+.wrapperInstructions {
+    height: auto;
+    width: 30vw;
+    margin: 20px auto 10px;
+    border: 0.1em solid #e51865;
+    background-color: #bdc7d8;
+
+}
+
+.wrapperInstructions h5, .wrapperInstructions p{
+    color:	#10102c;
+    text-justify: auto;
+    font-size: 0.9rem;
+}
+
+.footer {
+    border: 0.1em solid #bdc7d8;
+    background-color: #10102c;
+}
