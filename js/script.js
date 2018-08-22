@@ -7,6 +7,18 @@ window.addEventListener('load', init);
 //Let is for variables that the value will change.
 //Const is for variable that the value will not change.
 
+//More Levels.
+//Create the Variables with the values.
+//Group of objects into a single Variable.
+const levels = {
+    facil: 5,
+    medio: 3,
+    dificil: 2,
+};
+
+//Level changed.
+const currentLevel = levels.facil;
+
 //Set the initial time to 5, will change depending on the level.
 let timer = 5;
 
@@ -47,6 +59,9 @@ function init(){
     //Function has to be declared out of the Main function.
     displayWords(words);
 
+    //Show the seconds depending on the level.
+    seconds.innerHTML = currentLevel;
+
     //The game will init when a word is inputed.
     //WordInput from the HTML ID, to the DOM.
     //WordInput is Waiting for an event, 'input' to start function 'StartGame'.
@@ -62,19 +77,24 @@ function init(){
     //Every 500 miliseconds, check if the Status still true.
     //Functions Checkstatus is out of MainFunction.
     setInterval (checkStatus, 500);
-    console.log ('true');
 }
 
 //Function to Start Game.
 function startGame() {
     if (matchWords()) {
         running = true;
-        timer = 6;
+        timer = currentLevel + 1;
         displayWords (words);
         wordInput.value = '';
         scored++;
     }
-    scoreDisplayed.innerHTML = scored;
+
+    //If the scored is = to -1 the user should see 0, and not get the first courtesy point.
+    if (scored === -1) {
+        scoreDisplayed.innerHTML = 0;
+    } else {
+        scoreDisplayed.innerHTML = scored;
+    }
 }
 
 //Function to Match Words, the InputWord with the CurrentWord.
@@ -89,9 +109,11 @@ function matchWords (){
         //Change the Element DOM Message to 'Correcto!'
         //ReturnTrue as is important to know if the state is True.
         message.innerHTML = 'Correcto!';
+        wordInput.style.borderColor = "#03B091";
         return true;
     } else {
         message.innerHTML = 'Incorrecto!';
+        wordInput.style.borderColor = "#ff1a72";
         return false;
     }
 }
@@ -134,6 +156,12 @@ function checkStatus () {
     //Message is a HTML element saved into the DOM.
     //Inner HTMl to display the Text into the DOM.
     if (!running && timer === 0) {
+
         message.innerHTML = 'Perdiste se acabó el tiempo!';
+        message.style.fontSize = "22px";
+        message.style.color = "#e51865";
+
+        //Set score to -1, as the user should not be getting the initial point.
+        scored = -1;
     }
 }
