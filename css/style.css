@@ -30,7 +30,7 @@ body {
     font-style: italic;
 }
 
-.BoxInput {
+.boxInput {
     width: 25vw;
     height: 4vh;
     border: 0.2em solid #e51865;
