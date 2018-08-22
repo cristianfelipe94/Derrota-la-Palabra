@@ -20,7 +20,7 @@ let running;
 //Set the DOM elements that we need.
 let seconds = document.getElementById ('seconds');
 let currentWord = document.getElementById ('currentWord');
-let wordInput = document.getElementById ('WordInput');
+let wordInput = document.getElementById ('wordInput');
 let message = document.getElementById ('message');
 let timeDisplayed = document.getElementById ('time');
 let scoreDisplayed = document.getElementById ('score');
@@ -51,7 +51,7 @@ function init(){
     //WordInput from the HTML ID, to the DOM.
     //WordInput is Waiting for an event, 'input' to start function 'StartGame'.
     //Function is out of Main Function.
-    wordInput.addEventListener ('input',startGame);
+    wordInput.addEventListener ('input', startGame);
 
     //Set Interval, to repeat a countDown.
     //MiliSeconds 1000, equals as 1 second.
@@ -72,17 +72,19 @@ function startGame() {
         timer = 6;
         displayWords (words);
         wordInput.value = '';
-        scoreDisplayed++;
+        scored++;
     }
-    scoreDisplayed.innerHTML = scoreDisplayed;
+    scoreDisplayed.innerHTML = scored;
 }
 
 //Function to Match Words, the InputWord with the CurrentWord.
 function matchWords (){
+
     //WordInput.value = Return the Text that we input.
     //CurrentWord.innerHTML = Return the Text stored into currentWord.
     //Compare if both are the same.
     if (wordInput.value === currentWord.innerHTML) {
+
         //If they match.
         //Change the Element DOM Message to 'Correcto!'
         //ReturnTrue as is important to know if the state is True.
@@ -132,6 +134,6 @@ function checkStatus () {
     //Message is a HTML element saved into the DOM.
     //Inner HTMl to display the Text into the DOM.
     if (!running && timer === 0) {
-        message.innerHTML = 'Perdiste!';
+        message.innerHTML = 'Perdiste se acabó el tiempo!';
     }
 }
