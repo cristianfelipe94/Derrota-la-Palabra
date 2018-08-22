@@ -17,7 +17,7 @@ const levels = {
 };
 
 //Level changed.
-const currentLevel = levels.facil;
+const currentLevel = levels.medio;
 
 //Set the initial time to 5, will change depending on the level.
 let timer = 5;
@@ -36,7 +36,9 @@ let wordInput = document.getElementById ('wordInput');
 let message = document.getElementById ('message');
 let timeDisplayed = document.getElementById ('time');
 let scoreDisplayed = document.getElementById ('score');
-
+let easyOption = document.getElementById ('easy');
+let mediumOption = document.getElementById ('medium');
+let hardOption = document.getElementById ('hard');
 //Create a new variable with the words we need for the game to be displayed.
 //Create an Array of random words.
 const words = [
