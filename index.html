@@ -8,41 +8,41 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	
-	<body>
+	<body id="bodyColor">
+		<div id="mainWrapper">
+			<div class="titleWrapper">
+				<h1>Derrota la palabra</h1>
+			</div>
 
-		<div class="titleWrapper">
-			<h1>Derrota la palabra</h1>
-		</div>
+			<div class="wrapperBtn">
+				<button class="mainBtn">=</button>
+				<div class="btns">
+					<a href="#" id="easy">Nivel Facil.</a>
+					<a href="#" id="medium">Nivel Medio.</a>
+					<a href="#" id="hard">Nivel Dificil.</a>
+				</div>
+			</div>
 
-		<div class="wrapperBtn">
-			<button class="mainBtn">=</button>
-			<div class="btns">
-				<a href="#" id="easy">Nivel Facil.</a>
-				<a href="#" id="medium">Nivel Medio.</a>
-				<a href="#" id="hard">Nivel Dificil.</a>
+			<div class="timeInstructions">
+				<p>Escribe la palabra en <span id="seconds">5</span> segundos</p>
+			</div>
+
+			<div class="messageWrapper">
+				<h2 id="currentWord">Hola</h2>
+				<input type="text" placeholder="Escribir..." class="boxInput" id="wordInput" autofocus>
+				<h4 id="message"></h4>
+			</div>
+
+			<div class="wrapperScore">
+				<h3>Tiempo Restante: <span id="time">0</span></h3>
+				<h3>Puntuación: <span id="score">0</span></h3>
+			</div>
+
+			<div id="wrapperInstructions">
+				<h5>Instrucciones</h5>
+				<p>Escriba cada palabra dada para obtener puntaje antes que el tiempo se agote.</p>
 			</div>
 		</div>
-
-		<div class="timeInstructions">
-			<p>Escribe la palabra en <span id="seconds">5</span> segundos</p>
-		</div>
-
-		<div class="messageWrapper">
-			<h2 id="currentWord">Hola</h2>
-			<input type="text" placeholder="Escribir..." class="boxInput" id="wordInput" autofocus>
-			<h4 id="message"></h4>
-		</div>
-
-		<div class="wrapperScore">
-			<h3>Tiempo Restante: <span id="time">0</span></h3>
-			<h3>Puntuación: <span id="score">0</span></h3>
-		</div>
-
-		<div class="wrapperInstructions">
-			<h5>Instrucciones</h5>
-			<p>Escriba cada palabra dada para obtener puntaje antes que el tiempo se agote.</p>
-		</div>
-
 		<footer class="footer">
 				<p>Cristian Felipe &copy; 2018.</p>
 		</footer>

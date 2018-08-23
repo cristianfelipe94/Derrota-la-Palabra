@@ -7,20 +7,12 @@ window.addEventListener('load', init);
 //Let is for variables that the value will change.
 //Const is for variable that the value will not change.
 
-//More Levels.
-//Create the Variables with the values.
-//Group of objects into a single Variable.
-const levels = {
-    facil: 5,
-    medio: 3,
-    dificil: 2,
-};
 
 //Level changed.
-const currentLevel = levels.medio;
+let currentLevel = 6;
 
 //Set the initial time to 5, will change depending on the level.
-let timer = 5;
+let timer = 6;
 
 //Set the initial score to 0, everytime the game starts, the score will starts on 0.
 let scored = 0;
@@ -36,9 +28,15 @@ let wordInput = document.getElementById ('wordInput');
 let message = document.getElementById ('message');
 let timeDisplayed = document.getElementById ('time');
 let scoreDisplayed = document.getElementById ('score');
+
+//Level Options.
 let easyOption = document.getElementById ('easy');
 let mediumOption = document.getElementById ('medium');
 let hardOption = document.getElementById ('hard');
+
+//Interactive Level, change colors on screen.
+let bodyColor = document.getElementById ('bodyColor');
+
 //Create a new variable with the words we need for the game to be displayed.
 //Create an Array of random words.
 const words = [
@@ -70,6 +68,14 @@ function init(){
     //Function is out of Main Function.
     wordInput.addEventListener ('input', startGame);
 
+    //Funtions to change level.
+    //Btns from the HTML ID, to the DOM.
+    //Btns waiting to change time.
+    //Function is out of the Main Function.
+    easyOption.addEventListener ('click', changeLevel1);
+    mediumOption.addEventListener ('click', changeLevel2);
+    hardOption.addEventListener ('click', changeLevel3);
+    
     //Set Interval, to repeat a countDown.
     //MiliSeconds 1000, equals as 1 second.
     //Function CountDown is out of Main function.
@@ -80,6 +86,46 @@ function init(){
     //Functions Checkstatus is out of MainFunction.
     setInterval (checkStatus, 500);
 }
+
+//Function Level 1 easy.
+//Wont change time until match is over.
+function changeLevel1() {
+    if (!running && timer === 0){
+        currentLevel = 5;
+        timer = 5;
+        seconds.innerHTML = currentLevel;
+        bodyColor.style.backgroundColor = "#3c4261";
+    }else {
+        message.innerHTML = 'Termina la ronda para cambiar de nivel.';
+    }
+}
+
+//Function Level 2 medium.
+//Won't change time until match is over.
+function changeLevel2() {
+    if (!running && timer === 0){
+        currentLevel = 3;
+        timer = 3
+        seconds.innerHTML = currentLevel;
+        bodyColor.style.backgroundColor = "#272d50";
+    }else {
+        message.innerHTML = 'Termina la ronda para cambiar de nivel.';
+    }
+}
+
+//Function Level 3 hard.
+//Wont change time until match is over.
+function changeLevel3() {
+    if (!running && timer === 0){
+        currentLevel = 2;
+        timer = 2
+        seconds.innerHTML = currentLevel;
+        bodyColor.style.backgroundColor = "#131628";
+    }else {
+        message.innerHTML = 'Termina la ronda para cambiar de nivel.';
+    }
+}
+
 
 //Function to Start Game.
 function startGame() {

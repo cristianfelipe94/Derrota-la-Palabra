@@ -9,6 +9,11 @@ body {
     overflow: hidden;
 }
 
+#mainWrapper {
+    height: 100%;
+
+}
+
 .titleWrapper {
     border: 0.1em solid #bdc7d8;
     background-color: #991044;
@@ -86,7 +91,7 @@ body {
     font-size: 1em;
 }
 
-.wrapperInstructions {
+#wrapperInstructions {
     height: auto;
     width: 30vw;
     margin: 20px auto 10px;
@@ -95,16 +100,15 @@ body {
 
 }
 
-.wrapperInstructions h5, .wrapperInstructions p{
+#wrapperInstructions h5, #wrapperInstructions p{
     color:	#10102c;
     text-justify: auto;
     font-size: 0.9rem;
 }
 
 .footer {
-    border: 0.1em solid #bdc7d8;
-    background-color: #10102c;
+    border-top: 0.1em solid #bdc7d8;
     margin: 0;
     position: relative;
-    top: 100%;
+    top: 15vh;
 }
