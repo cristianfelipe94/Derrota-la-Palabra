@@ -62,8 +62,13 @@ body {
     background-color: #FF6875;
 }
 
+.levelWrapper {
+    margin: 0;
+    padding: 0;
+}
+
 .timeInstructions {
-    padding: 10px 0 2px 0;
+    padding: 0 0 2px 0;
 }
 
 #seconds, #time, #score {
@@ -110,5 +115,4 @@ body {
     border-top: 0.1em solid #bdc7d8;
     margin: 0;
     position: relative;
-    top: 15vh;
 }

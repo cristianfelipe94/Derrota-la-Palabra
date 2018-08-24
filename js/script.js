@@ -26,6 +26,7 @@ let seconds = document.getElementById ('seconds');
 let currentWord = document.getElementById ('currentWord');
 let wordInput = document.getElementById ('wordInput');
 let message = document.getElementById ('message');
+let keepTrying = document.getElementById ('keepTrying');
 let timeDisplayed = document.getElementById ('time');
 let scoreDisplayed = document.getElementById ('score');
 
@@ -33,6 +34,7 @@ let scoreDisplayed = document.getElementById ('score');
 let easyOption = document.getElementById ('easy');
 let mediumOption = document.getElementById ('medium');
 let hardOption = document.getElementById ('hard');
+let titleLevel = document.getElementById ('levelTitle');
 
 //Interactive Level, change colors on screen.
 let bodyColor = document.getElementById ('bodyColor');
@@ -52,6 +54,34 @@ const words = [
     'zapateada',
 ];
 
+//Create a new variable with phrases.
+//Phrases will be displayed as you win.
+const win = [
+    'Correcto!',
+    'Genial!',
+    'Bien hecho!',
+    'Pudo ser mejor.',
+    'Esa estuvo dificil.',
+    'Ajaaa asi se hace!',
+    'Y pensar que te iba mal en la escuela.',
+    'Excelente!',
+    'Esos dedos están que arden',
+    'Rapido!',
+];
+
+//Create a new variable with phrases running out of time.
+//Phrases will be displayed as you fail.
+const noTime = [
+    'Te fue demasiado mal.',
+    'Pudiste hacerlo mejor.',
+    'Vuelve a intentarlo.',
+    'Esa estuvo dificil.',
+    'Te fallaron los dedos.',
+    'Parpadeaste, mejor suerte la próxima.',
+    'Es tan difícil?',
+    'Prueba el nivel Fácil.',
+];
+
 //Init Game, this function will be active as the page load.
 function init(){
 
@@ -67,7 +97,7 @@ function init(){
     //WordInput is Waiting for an event, 'input' to start function 'StartGame'.
     //Function is out of Main Function.
     wordInput.addEventListener ('input', startGame);
-
+    
     //Funtions to change level.
     //Btns from the HTML ID, to the DOM.
     //Btns waiting to change time.
@@ -85,6 +115,7 @@ function init(){
     //Every 500 miliseconds, check if the Status still true.
     //Functions Checkstatus is out of MainFunction.
     setInterval (checkStatus, 500);
+
 }
 
 //Function Level 1 easy.
@@ -95,6 +126,9 @@ function changeLevel1() {
         timer = 5;
         seconds.innerHTML = currentLevel;
         bodyColor.style.backgroundColor = "#3c4261";
+        titleLevel.innerHTML = 'Dificultad Fácil.';
+        titleLevel.style.fontSize = '22px';
+        titleLevel.style.color = '#ffbf00';
     }else {
         message.innerHTML = 'Termina la ronda para cambiar de nivel.';
     }
@@ -108,6 +142,9 @@ function changeLevel2() {
         timer = 3
         seconds.innerHTML = currentLevel;
         bodyColor.style.backgroundColor = "#272d50";
+        titleLevel.innerHTML = 'Dificultad Medio.';
+        titleLevel.style.fontSize = '22px';
+        titleLevel.style.color = '#FF5B5B';
     }else {
         message.innerHTML = 'Termina la ronda para cambiar de nivel.';
     }
@@ -121,6 +158,9 @@ function changeLevel3() {
         timer = 2
         seconds.innerHTML = currentLevel;
         bodyColor.style.backgroundColor = "#131628";
+        titleLevel.innerHTML = 'Dificultad Difícil.';
+        titleLevel.style.fontSize = '22px';
+        titleLevel.style.color = '#ff1a72';
     }else {
         message.innerHTML = 'Termina la ronda para cambiar de nivel.';
     }
@@ -156,17 +196,19 @@ function matchWords (){
         //If they match.
         //Change the Element DOM Message to 'Correcto!'
         //ReturnTrue as is important to know if the state is True.
-        message.innerHTML = 'Correcto!';
+        displayWinPhrases (win);
         wordInput.style.borderColor = "#03B091";
+        message.style.color = "#03B091";
         return true;
     } else {
         message.innerHTML = 'Incorrecto!';
         wordInput.style.borderColor = "#ff1a72";
+        message.style.color = "#ff1a72";
         return false;
     }
 }
 
-//Create function to generate random words from the array.
+//Create function to generate random words from the Array.
 function displayWords(words) {
 
     //First generate a random number or random index to access the Array.
@@ -179,6 +221,36 @@ function displayWords(words) {
     //Change the current word for the new word, using the RandomIndex.
     //InnerHTML = Will set the new Text into the HTML element, from the Array Words, with the index number [RandomIndex].
     currentWord.innerHTML = words[randomIndex];
+}
+
+//Create a function to generate random phrases from the Array.
+function displayWinPhrases (win) {
+
+    //First generate a random number or random index to access the Array.
+    //Math floor= Round down numbers. 
+    //Math Random= Generate a random number.
+    //Multiply = Multiply the random number by the length of the Array.
+    const randomPhraseIndex = Math.floor(Math.random() * win.length);
+
+    //In this function create the Output for the new word.
+    //Change the current message for the new message, using the RandomPhraseIndex.
+    //InnerHTML = Will set the new Text into the HTML element, from the Array Words, with the index number [RandomPhraseIndex].
+    message.innerHTML = win[randomPhraseIndex];
+}
+
+//Create a function to generate random phrases from the Array.
+function displayFailPhrases (noTime) {
+
+    //First generate a random number or random index to access the Array.
+    //Math floor= Round down numbers. 
+    //Math Random= Generate a random number.
+    //Multiply = Multiply the random number by the length of the Array.
+    const randomFailIndex = Math.floor(Math.random() * noTime.length);
+
+    //In this function create the Output for the new word.
+    //Change the current message for the new message, using the RandomFailIndex.
+    //InnerHTML = Will set the new Text into the HTML element, from the Array Words, with the index number [RandomFailIndex].
+    keepTrying.innerHTML = noTime[randomFailIndex];
 }
 
 function countDown() {
@@ -205,6 +277,7 @@ function checkStatus () {
     //Inner HTMl to display the Text into the DOM.
     if (!running && timer === 0) {
 
+  
         message.innerHTML = 'Perdiste se acabó el tiempo!';
         message.style.fontSize = "22px";
         message.style.color = "#e51865";
@@ -212,4 +285,13 @@ function checkStatus () {
         //Set score to -1, as the user should not be getting the initial point.
         scored = -1;
     }
+}
+
+//Check game status.
+function tryStatus () {
+
+    displayFailPhrases (noTime);
+    keepTrying.style.fontSize = "18px";
+    keepTrying.style.color = "#e51865";
+
 }
