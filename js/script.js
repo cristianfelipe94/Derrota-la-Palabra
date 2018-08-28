@@ -37,10 +37,10 @@ let hardOption = document.getElementById ('hard');
 let titleLevel = document.getElementById ('levelTitle');
 
 //Score Chart elements.
-let highScored = document.getElementById ('highScored');
+const highScored = document.getElementById ('highScored');
 let lowScored = document.getElementById ('lowScored');
 let lowerScored = document.getElementById ('lowerScored');
-
+let highScoreName = document.getElementById ('highScoreName');
 
 //Interactive Level, change colors on screen.
 let bodyColor = document.getElementById ('bodyColor');
@@ -109,6 +109,7 @@ function init(){
     //Functions Checkstatus is out of MainFunction.
     setInterval (checkStatus, 500);
 
+    setInterval (checkHighScored, 500);
 }
 
 //Function Level 1 easy.
@@ -262,5 +263,16 @@ function checkStatus () {
 
         //Set score to -1, as the user should not be getting the initial point.
         scored = -1;
+    }
+}
+
+//Check Scored.
+function checkHighScored () {
+    if (!running && timer === 0 && scoreDisplayed.innerHTML > highScored.innerHTML) {
+        highScoreName.innerHTML = 'Su puntuación más alta fue:';
+        highScored.innerHTML = scoreDisplayed.innerHTML;
+    } else if (scoreDisplayed.innerHTML < highScored.innerHTML) {
+        highScoreName.innerHTML = 'Su puntuación más alta fue:';
+        highScored.innerHTML = highScored.innerHTML;
     }
 }

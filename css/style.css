@@ -24,10 +24,17 @@ body {
     right: 36vw;
     bottom: 2vh;
     border: 0.1em double #bdc7d8;
-    margin: 0.1em;
+    margin: 0.1em 0.1em 0.1em 2em;
     padding: 0.4em;
     display: inline-block;
+    font-size: 0.8rem;
     text-align: justify;
+}
+
+#highScoreName, #highScored {
+    display: inline-block;
+    margin: 0px;
+    padding: 0.2em;
 }
 
 .wrapperBtn {
