@@ -19,6 +19,17 @@ body {
     background-color: #991044;
 }
 
+.highScoreWrapper {
+    position: relative;
+    right: 36vw;
+    bottom: 2vh;
+    border: 0.1em double #bdc7d8;
+    margin: 0.1em;
+    padding: 0.4em;
+    display: inline-block;
+    text-align: justify;
+}
+
 .wrapperBtn {
     position: relative;
     bottom: 12px;

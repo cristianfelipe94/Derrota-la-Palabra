@@ -36,6 +36,12 @@ let mediumOption = document.getElementById ('medium');
 let hardOption = document.getElementById ('hard');
 let titleLevel = document.getElementById ('levelTitle');
 
+//Score Chart elements.
+let highScored = document.getElementById ('highScored');
+let lowScored = document.getElementById ('lowScored');
+let lowerScored = document.getElementById ('lowerScored');
+
+
 //Interactive Level, change colors on screen.
 let bodyColor = document.getElementById ('bodyColor');
 
@@ -67,19 +73,6 @@ const win = [
     'Excelente!',
     'Esos dedos están que arden',
     'Rapido!',
-];
-
-//Create a new variable with phrases running out of time.
-//Phrases will be displayed as you fail.
-const noTime = [
-    'Te fue demasiado mal.',
-    'Pudiste hacerlo mejor.',
-    'Vuelve a intentarlo.',
-    'Esa estuvo dificil.',
-    'Te fallaron los dedos.',
-    'Parpadeaste, mejor suerte la próxima.',
-    'Es tan difícil?',
-    'Prueba el nivel Fácil.',
 ];
 
 //Init Game, this function will be active as the page load.
@@ -238,21 +231,6 @@ function displayWinPhrases (win) {
     message.innerHTML = win[randomPhraseIndex];
 }
 
-//Create a function to generate random phrases from the Array.
-function displayFailPhrases (noTime) {
-
-    //First generate a random number or random index to access the Array.
-    //Math floor= Round down numbers. 
-    //Math Random= Generate a random number.
-    //Multiply = Multiply the random number by the length of the Array.
-    const randomFailIndex = Math.floor(Math.random() * noTime.length);
-
-    //In this function create the Output for the new word.
-    //Change the current message for the new message, using the RandomFailIndex.
-    //InnerHTML = Will set the new Text into the HTML element, from the Array Words, with the index number [RandomFailIndex].
-    keepTrying.innerHTML = noTime[randomFailIndex];
-}
-
 function countDown() {
 
     //First Check time is not '0'.
@@ -285,13 +263,4 @@ function checkStatus () {
         //Set score to -1, as the user should not be getting the initial point.
         scored = -1;
     }
-}
-
-//Check game status.
-function tryStatus () {
-
-    displayFailPhrases (noTime);
-    keepTrying.style.fontSize = "18px";
-    keepTrying.style.color = "#e51865";
-
 }
