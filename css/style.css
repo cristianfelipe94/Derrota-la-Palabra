@@ -198,4 +198,10 @@ body {
     #wrapperInstructions {
         width: 90vw;
     }
+    .imgs {
+        width: 33vw;
+    }
+    .imgDisplay {
+        width: 30vw;
+    }
 }
