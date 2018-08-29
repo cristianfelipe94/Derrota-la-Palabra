@@ -131,6 +131,41 @@ body {
     font-size: 0.9rem;
 }
 
+.imgDisplay {
+    position: relative;
+    width: 25vw;
+}
+
+.idPlayers {
+    position: relative;
+    bottom: 0;
+}
+
+.playersBtn {
+    background-color: #FF6875;
+    color: black;
+    cursor: pointer;
+    width: 20em;
+    height: 1.4em;
+    transition: background-color 0.4s;
+}
+
+.playersBtn:hover {
+    background-color: #e51865;
+}
+
+.imgs {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+    background-color: #bdc7d8;
+    width: 30vw;
+}
+
+.idPlayers:hover .imgs {
+    display: block;
+}
+
 .footer {
     border-top: 0.1em solid #bdc7d8;
     margin: 0;
