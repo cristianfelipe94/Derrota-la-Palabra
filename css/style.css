@@ -1,3 +1,5 @@
+
+/*Main CSS Rules*/
 body {
     user-select: none;
     background-color: #10102c;
@@ -6,12 +8,12 @@ body {
     text-align: center;
     color: #f3f3f3;
     font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
 }
+/*Main CSS Rules Ends*/
+
 
 #mainWrapper {
     height: 100%;
-
 }
 
 .titleWrapper {
@@ -23,7 +25,7 @@ body {
     position: relative;
     right: 36vw;
     bottom: 2vh;
-    border: 0.1em double #bdc7d8;
+    border: 0.1em solid #bdc7d8;
     margin: 0.1em 0.1em 0.1em 2em;
     padding: 0.4em;
     display: inline-block;
@@ -62,7 +64,7 @@ body {
 .btns {
     display: none;
     position: relative;
-    left: 36.8vw;
+    margin: 0 auto;
     background-color: #f3f3f3;
     width: 271px;
 }
@@ -73,7 +75,7 @@ body {
     display: block;
     border: 0.5px solid #650a2d;
     padding: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.4s;
 }
 
 .btns a:hover {
@@ -81,7 +83,7 @@ body {
 }
 
 .levelWrapper {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 
@@ -125,7 +127,7 @@ body {
 
 #wrapperInstructions h5, #wrapperInstructions p{
     color:	#10102c;
-    text-justify: auto;
+    text-align: center;
     font-size: 0.9rem;
 }
 
@@ -133,4 +135,32 @@ body {
     border-top: 0.1em solid #bdc7d8;
     margin: 0;
     position: relative;
+}
+
+/*Responsive*/
+@media only screen and (max-width: 800px){
+    .titleWrapper{
+        height: 3em;
+    }
+    .titleWrapper h1 {
+        font-size: 1.5em;
+        margin: 0.2em auto;
+    }
+    .highScoreWrapper {
+        right: 0;
+        top: 0;
+        left: 0;
+        margin: 0 auto;
+        width: 90vw;
+        font-size: 0.9em;
+        text-align: center;
+    }
+    .boxInput {
+        width: 70vw;
+        height: 5vh;
+        padding: 0.4em;
+    }
+    #wrapperInstructions {
+        width: 90vw;
+    }
 }
