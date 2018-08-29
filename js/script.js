@@ -16,6 +16,7 @@ let timer = 6;
 
 //Set the initial score to 0, everytime the game starts, the score will starts on 0.
 let scored = 0;
+let highScoredValue = 0;
 
 //Declare a variable that will say if the game is running or not, Running=True, Stoped=False.
 //Don't declare it as ''running=true'', because is implicit.
@@ -37,10 +38,10 @@ let hardOption = document.getElementById ('hard');
 let titleLevel = document.getElementById ('levelTitle');
 
 //Score Chart elements.
-const highScored = document.getElementById ('highScored');
-let lowScored = document.getElementById ('lowScored');
-let lowerScored = document.getElementById ('lowerScored');
+let highScored = document.getElementById ('highScored');
 let highScoreName = document.getElementById ('highScoreName');
+let ptsScore = document.getElementById ('pts');
+let wrapperChart = document.getElementById ('wrapperChart');
 
 //Interactive Level, change colors on screen.
 let bodyColor = document.getElementById ('bodyColor');
@@ -110,10 +111,14 @@ function init(){
     setInterval (checkStatus, 500);
 
     setInterval (checkHighScored, 500);
+
 }
+
+
 
 //Function Level 1 easy.
 //Wont change time until match is over.
+//As soon as you change Level the Game will reset some numbers so the user starts over.
 function changeLevel1() {
     if (!running && timer === 0){
         currentLevel = 5;
@@ -123,6 +128,10 @@ function changeLevel1() {
         titleLevel.innerHTML = 'Dificultad Fácil.';
         titleLevel.style.fontSize = '22px';
         titleLevel.style.color = '#ffbf00';
+        highScoreName.innerHTML = "";
+        highScored.innerHTML = "";
+        ptsScore.innerHTML = "";
+
     }else {
         message.innerHTML = 'Termina la ronda para cambiar de nivel.';
     }
@@ -130,6 +139,7 @@ function changeLevel1() {
 
 //Function Level 2 medium.
 //Won't change time until match is over.
+//As soon as you change Level the Game will reset some numbers so the user starts over.
 function changeLevel2() {
     if (!running && timer === 0){
         currentLevel = 3;
@@ -139,6 +149,10 @@ function changeLevel2() {
         titleLevel.innerHTML = 'Dificultad Medio.';
         titleLevel.style.fontSize = '22px';
         titleLevel.style.color = '#FF5B5B';
+        highScoreName.innerHTML = "";
+        highScored.innerHTML = "";
+        ptsScore.innerHTML = "";
+
     }else {
         message.innerHTML = 'Termina la ronda para cambiar de nivel.';
     }
@@ -146,6 +160,7 @@ function changeLevel2() {
 
 //Function Level 3 hard.
 //Wont change time until match is over.
+//As soon as you change Level the Game will reset some numbers so the user starts over.
 function changeLevel3() {
     if (!running && timer === 0){
         currentLevel = 2;
@@ -155,6 +170,10 @@ function changeLevel3() {
         titleLevel.innerHTML = 'Dificultad Difícil.';
         titleLevel.style.fontSize = '22px';
         titleLevel.style.color = '#ff1a72';
+        highScoreName.innerHTML = "";
+        highScored.innerHTML = "";
+        ptsScore.innerHTML = "";
+
     }else {
         message.innerHTML = 'Termina la ronda para cambiar de nivel.';
     }
@@ -169,6 +188,7 @@ function startGame() {
         displayWords (words);
         wordInput.value = '';
         scored++;
+        highScoredValue++;
     }
 
     //If the scored is = to -1 the user should see 0, and not get the first courtesy point.
@@ -263,16 +283,38 @@ function checkStatus () {
 
         //Set score to -1, as the user should not be getting the initial point.
         scored = -1;
+        
     }
 }
 
 //Check Scored.
 function checkHighScored () {
-    if (!running && timer === 0 && scoreDisplayed.innerHTML > highScored.innerHTML) {
-        highScoreName.innerHTML = 'Su puntuación más alta fue:';
-        highScored.innerHTML = scoreDisplayed.innerHTML;
-    } else if (scoreDisplayed.innerHTML < highScored.innerHTML) {
-        highScoreName.innerHTML = 'Su puntuación más alta fue:';
+
+    //Check if Score is higher that the HTML Score.
+    //If that's true, overwritte the HTML with the NewScore.
+    //Show a current message when bitting highest score.
+    //As the Score and HighScoreValue increase by one, is necessary to Reset them to -1.
+    if (scored > highScored.innerHTML) {
+        highScoredValue = scored;
+        highScoreName.innerHTML = 'Tu puntuación más alta es:';
+        highScored.innerHTML = highScoredValue;
+        highScored.style.color = "#03B091";
+        ptsScore.innerHTML = 'pts.';
+        wrapperChart.style.borderColor = "#03B091";
+
+        highScoredValue = -1;
+
+    //Check if HTML Score is higher that Score.
+    //If that's true, is not necessary to overwritte the HTML with the NewScore.
+    //Show a current message what the highest score was.
+    //As the Score and HighScoreValue increase by one, is necessary to Reset them to -1.
+    } else if (highScored.innerHTML > scored) {
+        highScoreName.innerHTML = 'Tu puntuación más alta fue:';
         highScored.innerHTML = highScored.innerHTML;
+        highScored.style.color = "#ff1a72";
+        ptsScore.innerHTML = 'pts.';
+        wrapperChart.style.borderColor = "#ff1a72";
+
+        highScoredValue = -1;
     }
-}
+}   
