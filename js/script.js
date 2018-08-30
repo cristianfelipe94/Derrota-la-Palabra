@@ -28,6 +28,7 @@ let seconds = document.getElementById ('seconds');
 let currentWord = document.getElementById ('currentWord');
 let wordInput = document.getElementById ('wordInput');
 let message = document.getElementById ('message');
+let messageLang = document.getElementById ('messageLang');
 let keepTrying = document.getElementById ('keepTrying');
 let timeDisplayed = document.getElementById ('time');
 let scoreDisplayed = document.getElementById ('score');
@@ -283,8 +284,11 @@ function init(){
     //Functions Checkstatus is out of MainFunction.
     setInterval (checkStatus, 500);
 
+    //Functions checkHighScored is out of MainFunction.
     setInterval (checkHighScored, 500);
 
+    //Functions checkErrorMessage is out of MainFunction.
+    setInterval (checkErrorMessage, 2000); 
 }
 
 //Function Level 1 easy.
@@ -363,12 +367,15 @@ function changeEnglishLang () {
         highScoreName.innerHTML = "";
         highScored.innerHTML = "";
         ptsScore.innerHTML = "";
+        messageLang.innerHTML = "";
 
     }else if (!running && timer === 0 && initLang === false) {
-        message.innerHTML = 'Languaje already changed.';
+        messageLang.innerHTML = 'Languaje already changed.';
+        messageLang.style.color = "#ff1a72";
 
     } else {
-        message.innerHTML = 'Finish match to change Languaje.';
+        messageLang.innerHTML = 'Finish match to change Languaje.';
+        messageLang.style.color = "#ff1a72";
     }
 }
 
@@ -384,12 +391,15 @@ function changeSpanishLang () {
         highScoreName.innerHTML = "";
         highScored.innerHTML = "";
         ptsScore.innerHTML = "";
+        messageLang.innerHTML = "";
 
     }else if (!running && timer === 0 && initLang === true) {
-        message.innerHTML = 'El Idioma ya se cambió.';
+        messageLang.innerHTML = 'El Idioma ya se cambió.';
+        messageLang.style.color = "#ff1a72";
 
     }else {
-        message.innerHTML = 'Termina la ronda para cambiar de Idioma.';
+        messageLang.innerHTML = 'Termina la ronda para cambiar de Idioma.';
+        messageLang.style.color = "#ff1a72";
     }
 }
 
@@ -565,4 +575,9 @@ function checkHighScored () {
 
         highScoredValue = -1;
     }
-}   
+}
+
+//Check error messages.
+function checkErrorMessage () {
+    messageLang.innerHTML = "";
+}
