@@ -21,6 +21,7 @@ let highScoredValue = 0;
 //Declare a variable that will say if the game is running or not, Running=True, Stoped=False.
 //Don't declare it as ''running=true'', because is implicit.
 let running;
+let initLang = true;
 
 //Set the DOM elements that we need.
 let seconds = document.getElementById ('seconds');
@@ -37,6 +38,10 @@ let mediumOption = document.getElementById ('medium');
 let hardOption = document.getElementById ('hard');
 let titleLevel = document.getElementById ('levelTitle');
 
+//Languajes Options.
+let englishLang = document.getElementById ('english');
+let spanishLang = document.getElementById ('español');
+
 //Score Chart elements.
 let highScored = document.getElementById ('highScored');
 let highScoreName = document.getElementById ('highScoreName');
@@ -48,7 +53,7 @@ let bodyColor = document.getElementById ('bodyColor');
 
 //Create a new variable with the words we need for the game to be displayed.
 //Create an Array of random words.
-const words = [
+const spanishWords = [
     'mae',
     'puravida',
     'tuanis',
@@ -59,6 +64,171 @@ const words = [
     'seas tonto',
     'chusma',
     'zapateada',
+    'señor',
+    'señora',
+    'paciencia',
+    'rizando',
+    'medicina',
+    'sombrero',
+    'vestido',
+    'consonante',
+    'chispa',
+    'entrenamiento',
+    'modestamente',
+    'interesante',
+    'ardua',
+    'idioma',
+    'auditiva',
+    'solventar',
+    'provocar',
+    'complicada',
+    'sustituyendo',
+    'transtornos',
+    'afirma',
+    'fonema',
+    'añadiendo',
+    'nativo',
+    'arte',
+    'dificultad',
+    'aceituna',
+    'argumenta',
+    'oral',
+    'similar',
+    'esternocleidomastoideo',
+    'ahogado',
+    'abanico',
+    'ocurrir',
+    'antiguo',
+    'solamente',
+    'oportunidad',
+    'orden',
+    'particularmente',
+    'abierto',
+    'realizar',
+    'recoger',
+    'presidente',
+    'problema',
+    'bastante',
+    'proporcionar',
+    'preparar',
+    'recientemente',
+    'recurso',
+    'grabar',
+    'papel',
+    'seguro',
+    'mismo',
+    'colegio',
+    'escena',
+    'parecer',
+    'vender',
+    'enviar',
+    'mayor',
+    'sentido',
+    'serie',
+    'grave',
+    'servir',
+    'sexo',
+    'sexual',
+    'sacudir',
+];
+
+const englishWords = [
+    'authority',
+    'available',
+    'beautiful',
+    'become',
+    'behavior',
+    'best',
+    'blood',
+    'brother',
+    'business',
+    'buy',
+    'candidate',
+    'career',
+    'catch',
+    'chair',
+    'church',
+    'cold',
+    'collection',
+    'couple',
+    'cover',
+    'dark',
+    'death',
+    'design',
+    'develop',
+    'dog',
+    'drug',
+    'grow',
+    'growth',
+    'guess',
+    'gun',
+    'guy',
+    'hair',
+    'half',
+    'hand',
+    'hang',
+    'happen',
+    'happy',
+    'hard',
+    'have',
+    'he',
+    'head',
+    'health',
+    'hear',
+    'heart',
+    'heat',
+    'heavy',
+    'help',
+    'house',
+    'how',
+    'however',
+    'huge',
+    'human',
+    'hundred',
+    'husband',
+    'life',
+    'light',
+    'like',
+    'likely',
+    'line',
+    'list',
+    'listen',
+    'little',
+    'live',
+    'local',
+    'long',
+    'look',
+    'lose',   
+    'our',
+    'out',
+    'outside',
+    'over',
+    'own',
+    'owner',
+    'page',
+    'pain',
+    'painting',
+    'paper',
+    'parent',
+    'part',
+    'provide',
+    'public',
+    'pull',
+    'purpose',
+    'push',
+    'put',
+    'quality',
+    'question',
+    'quickly',
+    'quite',
+    'seven',
+    'several',
+    'sex',
+    'sexual',
+    'shake',
+    'share',
+    'she',
+    'shoot',
 ];
 
 //Create a new variable with phrases.
@@ -79,10 +249,6 @@ const win = [
 //Init Game, this function will be active as the page load.
 function init(){
 
-    //First this function will load a word from the Array.
-    //Function has to be declared out of the Main function.
-    displayWords(words);
-
     //Show the seconds depending on the level.
     seconds.innerHTML = currentLevel;
 
@@ -100,6 +266,13 @@ function init(){
     mediumOption.addEventListener ('click', changeLevel2);
     hardOption.addEventListener ('click', changeLevel3);
     
+    //Funtions to change Languaje.
+    //Btns from the HTML ID, to the DOM.
+    //Btns waiting to change time.
+    //Function is out of the Main Function.
+    englishLang.addEventListener ('click', changeEnglishLang);
+    spanishLang.addEventListener ('click', changeSpanishLang);
+
     //Set Interval, to repeat a countDown.
     //MiliSeconds 1000, equals as 1 second.
     //Function CountDown is out of Main function.
@@ -113,8 +286,6 @@ function init(){
     setInterval (checkHighScored, 500);
 
 }
-
-
 
 //Function Level 1 easy.
 //Wont change time until match is over.
@@ -179,13 +350,72 @@ function changeLevel3() {
     }
 }
 
+//Function to change Languaje.
+//InitLang should be different than false to be change for false.
+//If it's already false won't change Languaje,
+//because it has to be different than false to run the Function=DisplayWords.
+//Won't change languaje if match has not finished.
+function changeEnglishLang () {
+
+    if (!running && timer === 0 && !initLang === false ){
+        displayWords (englishWords);
+        initLang = false;
+        highScoreName.innerHTML = "";
+        highScored.innerHTML = "";
+        ptsScore.innerHTML = "";
+
+    }else if (!running && timer === 0 && initLang === false) {
+        message.innerHTML = 'Languaje already changed.';
+
+    } else {
+        message.innerHTML = 'Finish match to change Languaje.';
+    }
+}
+
+//Function to change Languaje.
+//InitLang should be different than true to be change for true.
+//If it's already false won't change Languaje,
+//because it has to be different than true to run the Function=DisplayWords.
+//Won't change languaje if match has not finished.
+function changeSpanishLang () {
+    if (!running && timer === 0 && !initLang === true){
+        displayWords (spanishWords);
+        initLang = true;
+        highScoreName.innerHTML = "";
+        highScored.innerHTML = "";
+        ptsScore.innerHTML = "";
+
+    }else if (!running && timer === 0 && initLang === true) {
+        message.innerHTML = 'El Idioma ya se cambió.';
+
+    }else {
+        message.innerHTML = 'Termina la ronda para cambiar de Idioma.';
+    }
+}
+
 
 //Function to Start Game.
 function startGame() {
-    if (matchWords()) {
+
+    //Start Game Will run in Init Main Function.
+    //Check if InitLang is true.
+    //By default InitLang is true.
+    //Runs the SpanishLang function.
+    if (matchWords() && initLang === true) {
         running = true;
+        displayWords (spanishWords);
         timer = currentLevel + 1;
-        displayWords (words);
+        wordInput.value = '';
+        scored++;
+        highScoredValue++;
+    
+    //As Languaje can be change, will check if InitLang has changed.
+    //If so, the defaul InitLang will be different.
+    //And runs the EnglishLang Function.
+    } else if (matchWords() && initLang === false) {
+        running = true;
+        displayWords (englishWords);
+        timer = currentLevel + 1;
         wordInput.value = '';
         scored++;
         highScoredValue++;
@@ -223,19 +453,37 @@ function matchWords (){
 }
 
 //Create function to generate random words from the Array.
-function displayWords(words) {
+function displayWords(englishWords) {
 
     //First generate a random number or random index to access the Array.
     //Math floor= Round down numbers. 
     //Math Random= Generate a random number.
     //Multiply = Multiply the random number by the length of the Array.
-    const randomIndex = Math.floor(Math.random() * words.length);
+    const randomIndex = Math.floor(Math.random() * englishWords.length);
 
     //In this function create the Output for the new word.
     //Change the current word for the new word, using the RandomIndex.
     //InnerHTML = Will set the new Text into the HTML element, from the Array Words, with the index number [RandomIndex].
-    currentWord.innerHTML = words[randomIndex];
+    currentWord.innerHTML = englishWords[randomIndex];
+
 }
+
+//Create function to generate random words from the Array.
+function displayWords(spanishWords) {
+
+    //First generate a random number or random index to access the Array.
+    //Math floor= Round down numbers. 
+    //Math Random= Generate a random number.
+    //Multiply = Multiply the random number by the length of the Array.
+    const randomIndex = Math.floor(Math.random() * spanishWords.length);
+
+    //In this function create the Output for the new word.
+    //Change the current word for the new word, using the RandomIndex.
+    //InnerHTML = Will set the new Text into the HTML element, from the Array Words, with the index number [RandomIndex].
+    currentWord.innerHTML = spanishWords[randomIndex];
+
+}
+
 
 //Create a function to generate random phrases from the Array.
 function displayWinPhrases (win) {

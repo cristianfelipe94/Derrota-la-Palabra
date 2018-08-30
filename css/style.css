@@ -78,6 +78,10 @@ body {
     transition: background-color 0.4s;
 }
 
+#english, #español {
+    display: inline-block;
+}
+
 .btns a:hover {
     background-color: #FF6875;
 }
