@@ -22,6 +22,7 @@ let highScoredValue = 0;
 //Don't declare it as ''running=true'', because is implicit.
 let running;
 let initLang = true;
+let statusScore = true;
 
 //Set the DOM elements that we need.
 let seconds = document.getElementById ('seconds');
@@ -36,6 +37,8 @@ let highMainScore = document.getElementById ('highMainScore');
 
 //Style DOM elements.
 let mainTitle = document.getElementById ('mainTitle');
+let face = document.getElementById ('face');
+let insta = document.getElementById ('insta');
 let infoDeleted = document.getElementsByClassName('infoDeleted');
 let imgForTheWin = document.getElementsByClassName('imgWin');
 let titleWrapperWin = document.getElementById ('titleWrapperWin');
@@ -298,7 +301,7 @@ function init(){
     //Every 500 miliseconds, check if the Status still true.
     //Functions Checkstatus is out of MainFunction.
     setInterval (checkStatus, 500);
-
+    
     //Functions checkHighScored is out of MainFunction.
     setInterval (checkHighScored, 500);
 
@@ -471,11 +474,15 @@ function matchWords (){
         displayWinPhrases (win);
         wordInput.style.borderColor = "#03B091";
         message.style.color = "#03B091";
+        face.style.color = "#03B091";
+        insta.style.color = "#03B091";
         return true;
     } else {
         message.innerHTML = 'Incorrecto!';
         wordInput.style.borderColor = "#ff1a72";
         message.style.color = "#ff1a72";
+        face.style.color = "#ff1a72";
+        insta.style.color = "#ff1a72";
         return false;
     }
 }
@@ -556,6 +563,8 @@ function checkStatus () {
         message.innerHTML = 'Perdiste se acabó el tiempo!';
         message.style.fontSize = "22px";
         message.style.color = "#e51865";
+        face.style.color = "#e51865";
+        insta.style.color = "#e51865";
 
         //Set score to -1, as the user should not be getting the initial point.
         scored = -1;
@@ -570,7 +579,7 @@ function checkHighScored () {
     //If that's true, overwritte the HTML with the NewScore.
     //Show a current message when bitting highest score.
     //As the Score and HighScoreValue increase by one, is necessary to Reset them to -1.
-    if (scored > highScored.innerHTML) {
+    if (!statusScore === false && scored > highScored.innerHTML) {
         highScoredValue = scored;
         highScoreName.innerHTML = 'Tu puntuación más alta es:';
         highScored.innerHTML = highScoredValue;
@@ -584,7 +593,7 @@ function checkHighScored () {
     //If that's true, is not necessary to overwritte the HTML with the NewScore.
     //Show a current message what the highest score was.
     //As the Score and HighScoreValue increase by one, is necessary to Reset them to -1.
-    } else if (highScored.innerHTML > scored) {
+    } else if (!statusScore === false && highScored.innerHTML > scored) {
         highScoreName.innerHTML = 'Tu puntuación más alta fue:';
         highScored.innerHTML = highScored.innerHTML;
         highScored.style.color = "#ff1a72";
@@ -605,19 +614,22 @@ function checkForWin () {
 
         timer = 0;
         running = false;
+        statusScore = false;
+
 
         mainTitle.innerHTML = 'Derrotaste la Palabra';
         mainTitle.style.color = '#132525';
         titleWrapperWin.style.backgroundColor = '#d6eaea';
         titleWrapperWin.style.border = '0.1em solid #274b4b';
        
-        wrapperChart.style.border = '0.5em solid #e51865';
+        wrapperChart.style.border = '0.2em solid #e51865';
         wrapperChart.style.margin = '2em auto';
         wrapperChart.style.right = '0';
         wrapperChart.style.bottom = '0';
         highScoreName.innerHTML = 'Obtuviste la puntuación más alta:';
        
-        wrapperInstructions.style.width = '40vw';
+        wrapperInstructions.style.display = 'block';
+        wrapperInstructions.style.width = '80vw';
         titleForTheWin.innerHTML = 'Felicidades!';
         paragraphForTheWin.innerHTML = 'Gracias por participar y jugar a este mini juego. Lo vi como una oportunidad para practicar lo que he aprendido en mis estudios de Diseño y Desarrollo Web, y también una oportunidad de impulsar mis dibujos y mi arte.';
        
