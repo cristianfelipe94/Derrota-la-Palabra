@@ -113,7 +113,7 @@ const spanishWords = [
     'argumenta',
     'oral',
     'similar',
-    'esternocleidomastoideo',
+    'estrellas',
     'ahogado',
     'abanico',
     'ocurrir',
@@ -610,7 +610,7 @@ function checkErrorMessage () {
 }
 
 function checkForWin () {
-    if (highScored.innerHTML > highMainScore.innerHTML && currentLevel === 2) {
+    if (currentLevel === 2 && scored > highMainScore.innerHTML) {
 
         timer = 0;
         running = false;
