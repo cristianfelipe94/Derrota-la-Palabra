@@ -65,8 +65,13 @@ body {
     display: none;
     position: relative;
     margin: 0 auto;
-    background-color: #f3f3f3;
+    background-color: #e51865;
     width: 271px;
+}
+
+.options {
+    background-color: #f3f3f3;
+
 }
 
 .btns a {
@@ -80,6 +85,10 @@ body {
 
 #english, #español {
     display: inline-block;
+}
+
+#english:hover, #español:hover {
+    background-color: #7bbbbb;
 }
 
 .btns a:hover {
@@ -126,10 +135,40 @@ body {
     margin: 20px auto 10px;
     border: 0.1em solid #e51865;
     background-color: #bdc7d8;
-
 }
 
 #wrapperInstructions h5, #wrapperInstructions p{
+    color:	#10102c;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+#wrapperReward {
+    display: none;
+    height: auto;
+    width: 30vw;
+    margin: 20px auto 10px;
+    border: 0.1em solid #e51865;
+    background-color: #bdc7d8;
+}
+
+#paragraphForTheReward{
+    color:	#10102c;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+#wrapperPolicy {
+    display: none;
+    height: auto;
+    width: 30vw;
+    margin: 20px auto 10px;
+    border: 0.1em solid #e51865;
+    background-color: #bdc7d8;
+}
+
+
+#paragraphForThePolicy {
     color:	#10102c;
     text-align: center;
     font-size: 0.9rem;
@@ -168,6 +207,17 @@ body {
 
 .idPlayers:hover .imgs {
     display: block;
+}
+
+.imgWin {
+    width: 50vw;
+    display: none;
+    margin: 2em auto;
+    opacity: 0.6;
+}
+
+.imgWin:hover {
+    opacity: 1;
 }
 
 .footer {

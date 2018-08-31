@@ -32,6 +32,21 @@ let messageLang = document.getElementById ('messageLang');
 let keepTrying = document.getElementById ('keepTrying');
 let timeDisplayed = document.getElementById ('time');
 let scoreDisplayed = document.getElementById ('score');
+let highMainScore = document.getElementById ('highMainScore');
+
+//Style DOM elements.
+let mainTitle = document.getElementById ('mainTitle');
+let infoDeleted = document.getElementsByClassName('infoDeleted');
+let imgForTheWin = document.getElementsByClassName('imgWin');
+let titleWrapperWin = document.getElementById ('titleWrapperWin');
+let titleForTheWin = document.getElementById ('titleForTheWin');
+let paragraphForTheWin = document.getElementById ('paragraphForTheWin');
+let wrapperInstructions = document.getElementById ('wrapperInstructions');
+let wrapperReward = document.getElementById ('wrapperReward');
+let paragraphForTheReward = document.getElementById ('paragraphForTheReward');
+let wrapperPolicy = document.getElementById ('wrapperPolicy');
+let paragraphForThePolicy = document.getElementById ('paragraphForThePolicy');
+
 
 //Level Options.
 let easyOption = document.getElementById ('easy');
@@ -286,6 +301,9 @@ function init(){
 
     //Functions checkHighScored is out of MainFunction.
     setInterval (checkHighScored, 500);
+
+    //Functions checkForWin is out of MainFunction.
+    setInterval (checkForWin, 500);
 
     //Functions checkErrorMessage is out of MainFunction.
     setInterval (checkErrorMessage, 2000); 
@@ -580,4 +598,44 @@ function checkHighScored () {
 //Check error messages.
 function checkErrorMessage () {
     messageLang.innerHTML = "";
+}
+
+function checkForWin () {
+    if (highScored.innerHTML > highMainScore.innerHTML && currentLevel === 2) {
+
+        timer = 0;
+        running = false;
+
+        mainTitle.innerHTML = 'Derrotaste la Palabra';
+        mainTitle.style.color = '#132525';
+        titleWrapperWin.style.backgroundColor = '#d6eaea';
+        titleWrapperWin.style.border = '0.1em solid #274b4b';
+       
+        wrapperChart.style.border = '0.5em solid #e51865';
+        wrapperChart.style.margin = '2em auto';
+        wrapperChart.style.right = '0';
+        wrapperChart.style.bottom = '0';
+        highScoreName.innerHTML = 'Obtuviste la puntuación más alta:';
+       
+        wrapperInstructions.style.width = '40vw';
+        titleForTheWin.innerHTML = 'Felicidades!';
+        paragraphForTheWin.innerHTML = 'Gracias por participar y jugar a este mini juego. Lo vi como una oportunidad para practicar lo que he aprendido en mis estudios de Diseño y Desarrollo Web, y también una oportunidad de impulsar mis dibujos y mi arte.';
+       
+        wrapperReward.style.display = 'block';
+        wrapperReward.style.width = '80vw';
+        paragraphForTheReward.innerHTML = 'Al obtener la puntuación más alta, tenés derecho de elegir uno de los diseños que están abajo, tomar un Screenshot (captura de pantalla), y ponerse en contacto con Cristian Felipe ("stoned_christ" cuenta de Instagram). Ya que el premio por apoyarme, jugar y pasar este juego es una Impresión en físico del diseño.';
+
+        wrapperPolicy.style.display = 'block';
+        wrapperPolicy.style.width = '80vw';
+        paragraphForThePolicy.innerHTML = 'El premio de la impresión es por tiempo limitado según lo especificado por Cristian Felipe. Sólo participan los diseños que están en esta página, el usuario al ganar debe ponerse en contacto con Cristian Felipe para reclamar el premio antes de la fecha limite. Sólo ganan dos personas, las dos primeras personas en Ganar el juego y ponerse contacto con Cristian Felipe por mi cuenta de Instagram "Stoned_Christ" o bien, cuenta de Facebook "Cristian Felipe" serán oficialmente ganadoras o ganadores de las impresiones.';
+
+        for (let i = 0; i < imgForTheWin.length; i++) {
+            imgForTheWin[i].style.display = 'block';
+        }
+
+        for (let i = 0; i < infoDeleted.length; i++) {
+            infoDeleted[i].style.display = 'none';
+        }
+
+    }
 }

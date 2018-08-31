@@ -10,38 +10,38 @@
 	
 	<body id="bodyColor">
 		<div id="mainWrapper">
-			<div class="titleWrapper">
-				<h1>Derrota la palabra</h1>
+			<div id="titleWrapperWin" class="titleWrapper">
+				<h1 id="mainTitle">Derrota la palabra</h1>
 			</div>
 
-			<div class="wrapperBtn">
+			<div class="wrapperBtn infoDeleted">
 				<button class="mainBtn">=</button>
 				<div class="btns">
-					<a href="#" id="easy">Nivel Facil.</a>
-					<a href="#" id="medium">Nivel Medio.</a>
-					<a href="#" id="hard">Nivel Dificil.</a>
-					<a href="#" class="lenguaje" id="english">Activate English</a>
-					<a href="#" class="lenguaje" id="español">Activar Español</a>
+					<a href="#" class="options" id="easy">Nivel Facil.</a>
+					<a href="#" class="options" id="medium">Nivel Medio.</a>
+					<a href="#" class="options" id="hard">Nivel Dificil.</a>
+					<a href="#" class="options" id="english">Activate English</a>
+					<a href="#" class="options" id="español">Activar Español</a>
 				</div>
 			</div>
 
 			<div id="wrapperChart" class="highScoreWrapper">
 				<h4>Puntuaciones más altas.</h4>
-				<h4>Señor Peppinillos: 100pts.</h4>
+				<h4>Señor Peppinillos: <span id="highMainScore">1</span>pts.</h4>
 				<h4>Cristian Felipe: 50pts.</h4>
 				<h4 id="highScoreName" class="userInfo"></h4>
 				<h4 id="highScored" class="userInfo"></h4>
 				<h4 id="pts" class="userInfo"></h4>
 			</div>
 
-			<div class="levelWrapper">
+			<div class="levelWrapper infoDeleted">
 				<h4 id="levelTitle"></h4>
 			</div>
-			<div class="timeInstructions">
+			<div class="timeInstructions infoDeleted">
 				<p>Escribe la palabra en <span id="seconds">5</span> segundos</p>
 			</div>
 
-			<div class="messageWrapper">
+			<div class="messageWrapper infoDeleted">
 				<h2 id="currentWord">jugar</h2>
 				<input type="text" placeholder="Escribir..." class="boxInput" id="wordInput" autofocus>
 				<h4 id="message"></h4>
@@ -49,24 +49,35 @@
 				<h4 id="keepTrying"></h4>
 			</div>
 
-			<div class="wrapperScore">
+			<div class="wrapperScore infoDeleted">
 				<h3>Tiempo Restante: <span id="time">0</span></h3>
 				<h3>Puntuación: <span id="score">0</span></h3>
 			</div>
 
 			<div id="wrapperInstructions">
-				<h5>Instrucciones</h5>
-				<p>Escriba cada palabra dada para obtener puntaje antes que el tiempo se agote.</p>
+				<h5 id="titleForTheWin">Instrucciones</h5>
+				<p id="paragraphForTheWin">Escriba cada palabra dada para obtener puntaje antes que el tiempo se agote.</p>
+			</div>
+			<div id="wrapperReward">
+				<p id="paragraphForTheReward"></p>
 			</div>
 
-			<div class="idPlayers">
+			<div class="idPlayers infoDeleted">
 				<button class="playersBtn">=</button>
 				<div class="imgs">
 					<img src="img/player1.jpg" alt="señorPeppinillos-PlayerOne" class="imgDisplay">
 					<img src="img/player2.jpg" alt="cristianFelipe-PlayerTwo" class="imgDisplay">		
 				</div>
 			</div>
+			<div id="imgDisplayWin">
+				<img src="img/img1.jpg" alt="dibujo1" class="imgWin">
+				<img src="img/img2.jpg" alt="dibujo2" class="imgWin">
+				<img src="img/img3.jpg" alt="dibujo3" class="imgWin">
+			</div>
 
+			<div id="wrapperPolicy">
+				<p id="paragraphForThePolicy"></p>
+			</div>
 		</div>
 		<footer class="footer">
 				<p>Programado por Cristian Felipe 2018 &copy;.</p>
