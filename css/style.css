@@ -8,6 +8,7 @@ body {
     text-align: center;
     color: #f3f3f3;
     font-family: 'Source Sans Pro', Arial, sans-serif;
+    user-select: none;
 }
 /*Main CSS Rules Ends*/
 

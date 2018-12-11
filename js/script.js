@@ -79,7 +79,7 @@ const spanishWords = [
     'oferta',
     'oficina',
     'oficial',
-    'Oh',
+    'oh',
     'antiguo',
     'en',
     'uno',
@@ -426,7 +426,7 @@ const englishWords = [
     'remove',
     'report',
     'represent',
-    'Republican',
+    'republican',
     'require',
     'research',
     'resource',
@@ -895,11 +895,11 @@ function checkForWin () {
         wrapperInstructions.style.display = 'block';
         wrapperInstructions.style.width = '80vw';
         titleForTheWin.innerHTML = 'Felicidades!';
-        paragraphForTheWin.innerHTML = 'Gracias por participar y jugar a este mini juego. Lo vi como una oportunidad para practicar lo que he aprendido en mis estudios de Diseño y Desarrollo Web, y también una oportunidad de impulsar mis dibujos y mi arte.';
+        paragraphForTheWin.innerHTML = 'Gracias por participar y jugar a este mini juego. Lo vi como una oportunidad para practicar lo que he aprendido en mis estudios de Diseño y Desarrollo Web, y también una oportunidad de impulsar mis dibujos.';
        
         wrapperReward.style.display = 'block';
         wrapperReward.style.width = '80vw';
-        paragraphForTheReward.innerHTML = 'Al obtener la puntuación más alta, tenés derecho de elegir uno de los diseños que están abajo, tomar un Screenshot (captura de pantalla), y ponerse en contacto con Cristian Felipe ("stoned_christ" cuenta de Instagram). Ya que el premio por apoyarme, jugar y pasar este juego es una Impresión en físico del diseño.';
+        paragraphForTheReward.innerHTML = 'Al obtener la puntuación más alta, tenés derecho de elegir uno de los diseños que están abajo, tomar un Screenshot (captura de pantalla), y ponerse en contacto con Cristian Felipe ("stoned_christ" cuenta de Instagram).';
 
         wrapperPolicy.style.display = 'block';
         wrapperPolicy.style.width = '80vw';
