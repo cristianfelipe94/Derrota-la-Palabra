@@ -48,6 +48,7 @@ body {
 
 .wrapperBtn:hover .btns {
     display: block;
+    z-index: 5;
 }
 
 .mainBtn {
